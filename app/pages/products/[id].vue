@@ -1,15 +1,14 @@
 <script setup lang="ts">
-// 💡 IMPORTANT FIX: Remove the line below to stop manual imports from #imports.
-// import { useRoute, useAsyncData, createError, useSeoMeta, $fetch } from '#imports';
 
-import { useCartStore } from '~/stores/cart'; // Keep this manual import for your custom store
+
+import { useCartStore } from '~/stores/cart'; 
 
 // 1. Get the current route parameters
 const route = useRoute(); // Auto-imported
 const productId = Number(route.params.id);
 
 // 2. Fetch the single product data using useAsyncData
-// useAsyncData and $fetch are now fully auto-imported by Nuxt.
+
 const { data: product, pending, error } = await useAsyncData(
   `product-${productId}`,
   // We use $fetch (auto-imported) to call our API
@@ -18,12 +17,12 @@ const { data: product, pending, error } = await useAsyncData(
 
 // 3. Handle 404 and Redirection
 if (!product.value && !pending.value) {
-    // createError is auto-imported
+    
     throw createError({ statusCode: 404, statusMessage: 'Product Not Found', fatal: true });
 }
 
 // 4. Set dynamic page metadata for SEO (Crucial for SSR)
-useSeoMeta({ // useSeoMeta is auto-imported
+useSeoMeta({ 
   title: product.value?.name ? `${product.value.name} | Nuxt Catalog` : 'Product Detail',
   description: product.value?.description,
 });

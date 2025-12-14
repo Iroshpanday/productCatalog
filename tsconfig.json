@@ -3,6 +3,10 @@
   "files": [],
   "references": [
     {
+      // REFERENCE YOUR NEW CONFIG FILE HERE
+      "path": "./tsconfig.app.json"
+    },
+    {
       "path": "./.nuxt/tsconfig.app.json"
     },
     {

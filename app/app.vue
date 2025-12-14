@@ -1,6 +1,9 @@
 <template>
   <div>
     <CartStatus />
-    <NuxtPage />
+    
+    <NuxtLayout>
+      <NuxtPage />
+    </NuxtLayout>
   </div>
 </template>
