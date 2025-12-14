@@ -1,75 +1,63 @@
-# Nuxt Minimal Starter
+# 🚀 Nuxt 3 Product Catalog (SSR)
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+This is a modern e-commerce product catalog application built with **Nuxt 3** using a Server-Side Rendering (SSR) architecture. It features state management with Pinia, authentication middleware, a custom Nitro API, and a clean user interface powered by Tailwind CSS.
 
-## Setup
+## ✨ Key Features Implemented
 
-Make sure to install dependencies:
+| Feature | Description | Status |
+| :--- | :--- | :--- |
+| **Server-Side Rendering (SSR)** | Fast initial load and SEO-friendly rendering using Nuxt's universal mode. | ✅ |
+| **Nitro API** | Custom API layer (`/server/api`) used for fetching a large set of mock product data. | ✅ |
+| **Pinia State Management** | Handles the shopping cart state (`cart.ts`), persistent across refreshes using `useStorage`. | ✅ |
+| **Authentication Middleware** | Protects the `/checkout` route using the `auth.ts` middleware. Includes a **2-second redirect delay** for improved user experience. | ✅ |
+| **Persistent Layout** | Uses `app/layouts/default.vue` to provide a sticky, site-wide navigation bar with Cart status and Auth controls. | ✅ |
+| **Dynamic Routes** | Product Detail pages (`/products/:id`) use dynamic routing and fetch specific data. | ✅ |
+| **Pagination** | Functional component to navigate the expanded product list on the homepage. | ✅ |
+| **Optimized UI/UX** | Uses Nuxt Image, half-price display, and a clean Tailwind aesthetic with a persistent navbar. | ✅ |
+
+## 🛠️ Tech Stack
+
+* **Framework:** Nuxt 3
+* **State Management:** Pinia
+* **Styling:** Tailwind CSS
+* **Server:** Nitro (built-in)
+* **API:** Local Nitro Server Routes (`/server/api`)
+* **Language:** TypeScript
+
+## ⚙️ Project Setup and Run
+
+Follow these steps to get the project running on your local machine.
+
+### Prerequisites
+
+* Node.js (LTS version, e.g., 18+)
+* npm (or yarn/pnpm)
+
+### 1. Installation
+
+Assuming you have the final project folder (`nuxt-product-catalog`):
 
 ```bash
-# npm
+cd nuxt-product-catalog
+
+# Install dependencies
 npm install
 
-# pnpm
-pnpm install
+2. Development Server
+Start the application in development mode with hot-reloading:
 
-# yarn
-yarn install
+Bash
 
-# bun
-bun install
-```
-
-## Development Server
-
-Start the development server on `http://localhost:3000`:
-
-```bash
-# npm
 npm run dev
+The application will be accessible at: http://localhost:3000
 
-# pnpm
-pnpm dev
+3. Testing the Secure Flow
+Visit http://localhost:3000 and add a few products to the cart.
 
-# yarn
-yarn dev
+Click the "Go to Secure Checkout" button in the navbar.
 
-# bun
-bun run dev
-```
+If Logged Out: It will show "Access Denied. Redirecting in 2 seconds..." before returning to the homepage.
 
-## Production
+Click "Login (Simulate)".
 
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+Now, click "Go to Secure Checkout". The protected page will load successfully.
